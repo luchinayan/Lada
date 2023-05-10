@@ -1,0 +1,9 @@
+<template>
+    <lightning-layout multiple-rows="true" pull-to-boundary="small">
+        <template for:each={centers} for:item="center">
+            <lightning-layout-item key={center.Id} size="8" class="slds-var-p-around_x-small">
+                <c-automotive-center-details center={center}></c-automotive-center-details>
+            </lightning-layout-item>
+        </template>
+    </lightning-layout>
+</template>

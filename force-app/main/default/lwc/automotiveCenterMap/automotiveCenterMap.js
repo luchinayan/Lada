@@ -18,12 +18,15 @@ export default class AutomotiveCenterMap extends LightningElement {
                         City: City
                     },
                     title: Street,
-                    description: `${Type}, ${Phone}`,
-                    icon: 'utility:travel_and_places'
+                    description: `${Type},телефон: ${Phone}`,
+                    icon: 'utility:travel_and_places',
+                    recordId:center.Id
                 };
             });
         } else if (result.error) {
             console.error(result.error);
         }
     }
+
+      
 }
