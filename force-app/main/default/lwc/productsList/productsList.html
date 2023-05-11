@@ -1,0 +1,17 @@
+<template>
+  <ul>
+    <template for:each={cars} for:item="car">
+      <li key={car.Id}>
+        <div class="car-info" onclick={handleOpenModal} data-car-id={car.Id}>
+          <h3>{car.Name}</h3>
+        </div>
+      </li>
+    </template>
+  </ul>
+
+  <c-car-modal
+    is-modal-open={isModalOpen}
+    selected-car={selectedCar}
+    onclose={handleCloseModal}
+  ></c-car-modal>
+</template>

@@ -3,13 +3,8 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import createCase from '@salesforce/apex/CaseController.createCase';
 
 export default class AskQuestion extends LightningElement {
-    @track name = '';
     @track email = '';
     @track question = '';
-
-    handleNameChange(event) {
-        this.name = event.target.value;
-    }
 
     handleEmailChange(event) {
         this.email = event.target.value;
@@ -20,9 +15,8 @@ export default class AskQuestion extends LightningElement {
     }
 
     handleSubmit() {
-        createCase({ name: this.name, email: this.email, question: this.question })
+        createCase({ email: this.email, question: this.question })
             .then(() => {
-                this.name = '';
                 this.email = '';
                 this.question = '';
                 const event = new ShowToastEvent({
