@@ -24,11 +24,20 @@
           <p>Привод: {selectedCar.Drive_Unit__c}</p>
           <p>Комплектация: {selectedCar.eq__c}</p>
           <p>Коробка: {selectedCar.Transmission__c}</p>
+          <p>Цена: {selectedCarPrice}</p>
         </div>
-        <footer class="slds-modal__footer">
-          <button class="slds-button slds-button_neutral" onclick={closeModal}>
-            Close
-          </button>
+        <footer class="slds-grid slds-modal__footer slds-grid_align-spread">
+          <div class="slds-col">
+            <c-generate-p-d-f selected-car={selectedCar}></c-generate-p-d-f>
+          </div>
+          <div class="slds-col">
+            <button
+              class="slds-button slds-button_neutral"
+              onclick={closeModal}
+            >
+              Close
+            </button>
+          </div>
         </footer>
       </div>
     </div>

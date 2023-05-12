@@ -6,6 +6,7 @@ export default class ProductsList extends LightningElement {
     selectedCar;
     isModalOpen = false;
 
+
     @wire(getAllProducts)
     loadCars({ error, data }) {
         if (data) {
@@ -14,7 +15,6 @@ export default class ProductsList extends LightningElement {
             console.error(error);
         }
     }
-
     handleOpenModal(event) {
         const carId = event.currentTarget.dataset.carId;
         this.selectedCar = this.cars.find((car) => car.Id === carId);

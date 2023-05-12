@@ -3,13 +3,17 @@ public with sharing class ProductController {
   public static List<Product2> getAllProducts() {
     return [
       SELECT
-        Id,
+        Name,
         Car_Body__c,
         Drive_Unit__c,
         eq__c,
-        Name,
         Transmission__c,
-        Year__c
+        Year__c,
+        (
+          SELECT Pricebook2Id, UnitPrice, Pricebook2.Name, UseStandardPrice
+          FROM PricebookEntries
+          WHERE Pricebook2.IsStandard = FALSE
+        )
       FROM Product2
       WHERE Family = 'Cars'
     ];
