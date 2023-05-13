@@ -1,0 +1,49 @@
+<template>
+  <h2>Test Drive Request Form</h2>
+  <div>
+    <label>Full Name</label>
+    <input
+      type="text"
+      name="name"
+      value={fullName}
+      onchange={handleNameChange}
+    />
+  </div>
+  <div>
+    <label>Email Address</label>
+    <input
+      type="email"
+      name="email"
+      value={email}
+      onchange={handleEmailChange}
+    />
+  </div>
+  <div>
+    <label>Phone Number</label>
+    <input
+      type="text"
+      name="phone"
+      value={phone}
+      onchange={handlePhoneChange}
+    />
+  </div>
+  <div>
+    <label>Preferred Date</label>
+    <input
+      type="date"
+      name="date"
+      value={preferredDate}
+      onchange={handlePreferredDateChange}
+    />
+  </div>
+  <div>
+    <label>Preferred Car</label>
+    <select name="car" value={preferredCar} onchange={handlePreferredCarChange}>
+      <option value="">--Select Car--</option>
+      <template for:each={cars} for:item="car">
+        <option key={car.Id} value={car.Id}>{car.Name}</option>
+      </template>
+    </select>
+  </div>
+  <button onclick={handleSubmit}>Submit</button>
+</template>
