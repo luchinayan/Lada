@@ -15,16 +15,17 @@
               variant="inverse"
               size="small"
             ></lightning-icon>
-            <span class="slds-assistive-text">Close</span>
+            <span class="slds-assistive-text">{Close}</span>
           </button>
         </header>
         <div class="slds-modal__content slds-p-around_medium">
-          <p>Год: {selectedCar.Year__c}</p>
-          <p>Кузов: {selectedCar.Car_Body__c}</p>
-          <p>Привод: {selectedCar.Drive_Unit__c}</p>
-          <p>Комплектация: {selectedCar.eq__c}</p>
-          <p>Коробка: {selectedCar.Transmission__c}</p>
-          <p>Цена: {selectedCarPrice}</p>
+          <p>{Year}: {selectedCar.Year__c}</p>
+          <p>{Body_Type}: {selectedCar.Car_Body__c}</p>
+          <p>{Drive_Unit}: {selectedCar.Drive_Unit__c}</p>
+          <p>{Equipment}: {selectedCar.eq__c}</p>
+          <p>{Transmission}: {selectedCar.Transmission__c}</p>
+          <p>{Price}: {selectedCarPrice}</p>
+          <p>{selectedCar.Test__c}</p>
         </div>
         <footer class="slds-grid slds-modal__footer slds-grid_align-spread">
           <div class="slds-col">
@@ -35,7 +36,7 @@
               class="slds-button slds-button_neutral"
               onclick={closeModal}
             >
-              Close
+              {Close}
             </button>
           </div>
         </footer>

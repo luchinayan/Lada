@@ -8,6 +8,11 @@ import LEAD_COMPANY_FIELD from "@salesforce/schema/Lead.Company";
 import LEAD_PHONE_FIELD from "@salesforce/schema/Lead.Phone";
 import LEAD_SOURCE_FIELD from "@salesforce/schema/Lead.LeadSource";
 import getAllProducts from "@salesforce/apex/ProductController.getAllProducts";
+import Phone from '@salesforce/label/c.Phone';
+import Date from '@salesforce/label/c.Date';
+import Submit from '@salesforce/label/c.Submit';
+import Full_Name from '@salesforce/label/c.Full_Name';
+import Test_Drive_Request_Form from '@salesforce/label/c.Test_Drive_Request_Form';
 
 export default class TestDriveForm extends LightningElement {
   cars;
@@ -16,6 +21,11 @@ export default class TestDriveForm extends LightningElement {
   @track phone = "";
   @track preferredDate = "";
   @track preferredCar = "";
+  Phone = Phone;
+  Full_Name = Full_Name;
+  Date = Date;
+  Submit = Submit;
+  Test_Drive_Request_Form = Test_Drive_Request_Form;
 
   @wire(getAllProducts)
   loadCars({ error, data }) {

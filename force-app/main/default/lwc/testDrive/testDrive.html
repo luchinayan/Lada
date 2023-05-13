@@ -1,7 +1,7 @@
 <template>
-  <h2>Test Drive Request Form</h2>
+  <h2>{Test_Drive_Request_Form}</h2>
   <div>
-    <label>Full Name</label>
+    <label>{Full_Name}</label>
     <input
       type="text"
       name="name"
@@ -10,7 +10,7 @@
     />
   </div>
   <div>
-    <label>Email Address</label>
+    <label>Email</label>
     <input
       type="email"
       name="email"
@@ -19,25 +19,24 @@
     />
   </div>
   <div>
-    <label>Phone Number</label>
+    <label>{Phone}</label>
     <input
       type="text"
-      name="phone"
+      name={Phone}
       value={phone}
       onchange={handlePhoneChange}
     />
   </div>
   <div>
-    <label>Preferred Date</label>
+    <label>{Date}</label>
     <input
       type="date"
-      name="date"
+      name={Date}
       value={preferredDate}
       onchange={handlePreferredDateChange}
     />
   </div>
   <div>
-    <label>Preferred Car</label>
     <select name="car" value={preferredCar} onchange={handlePreferredCarChange}>
       <option value="">--Select Car--</option>
       <template for:each={cars} for:item="car">
@@ -45,5 +44,5 @@
       </template>
     </select>
   </div>
-  <button onclick={handleSubmit}>Submit</button>
+  <button onclick={handleSubmit}>{Submit}</button>
 </template>
