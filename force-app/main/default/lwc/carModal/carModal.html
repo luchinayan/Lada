@@ -24,7 +24,23 @@
           <p>{Drive_Unit}: {selectedCar.Drive_Unit__c}</p>
           <p>{Equipment}: {selectedCar.eq__c}</p>
           <p>{Transmission}: {selectedCar.Transmission__c}</p>
-          <p>{Price}: {selectedCarPrice}</p>
+          <div>
+            <h2>Select Currency:</h2>
+            <select
+              class="slds-select"
+              id="currencySelector"
+              onchange={handleChange}
+              onselect={handleSelect}
+            >
+              <option value="">Select currency</option>
+              <template for:each={currencyOptions} for:item="option">
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              </template>
+            </select>
+            <p>{Price}: {selectedCarPrice}</p>
+          </div>
           <p>{selectedCar.Test__c}</p>
         </div>
         <footer class="slds-grid slds-modal__footer slds-grid_align-spread">
