@@ -1,11 +1,15 @@
 import { LightningElement, api } from "lwc";
 import pdflib from "@salesforce/resourceUrl/  ";
 import { loadScript } from "lightning/platformResourceLoader";
-import Download_PDF from '@salesforce/label/c.Download_PDF';
+import downloadPDFLabel from '@salesforce/label/c.Download_PDF';
 
 export default class CreatePDF extends LightningElement {
   @api selectedCar;
-  Download_PDF = Download_PDF;
+  @api priceBYN;
+  @api priceUSD;
+  label = {
+    downloadPDFLabel
+  }
   renderedCallback() {
     loadScript(this, pdflib).then(() => { });
   }

@@ -1,16 +1,19 @@
 import { LightningElement, track } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import createCase from '@salesforce/apex/CaseController.createCase';
-import Ask_Question from '@salesforce/label/c.Ask_Question';
-import Question from '@salesforce/label/c.Question';
-import Submit from '@salesforce/label/c.Submit';
+import askQuestionLabel from '@salesforce/label/c.Ask_Question';
+import questionLabel from '@salesforce/label/c.Question';
+import submitLabel from '@salesforce/label/c.Submit';
 
 export default class AskQuestion extends LightningElement {
     @track email = '';
     @track question = '';
-    Ask_Question = Ask_Question;
-    Question = Question;
-    Submit = Submit;
+    label = {
+        askQuestionLabel,
+        questionLabel,
+        submitLabel,
+    }
+
 
     handleEmailChange(event) {
         this.email = event.target.value;

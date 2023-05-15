@@ -1,8 +1,12 @@
 import { LightningElement, wire } from 'lwc';
 import getAllAutomotiveCenters from '@salesforce/apex/AutomotiveCentersController.getAllAutomotiveCenters';
+import phoneLabel from '@salesforce/label/c.Phone';
 
 export default class AutomotiveCenterMap extends LightningElement {
     mapMarkers = [];
+    label = {
+        phoneLabel
+    }
     @wire(getAllAutomotiveCenters)
     loadCenters(result) {
         if (result.data) {
@@ -18,9 +22,9 @@ export default class AutomotiveCenterMap extends LightningElement {
                         City: City
                     },
                     title: Street,
-                    description: `${Type},телефон: ${Phone}`,
+                    description: `${Type},${PhoneText}: ${Phone}`,
                     icon: 'utility:travel_and_places',
-                    recordId:center.Id
+                    recordId: center.Id
                 };
             });
         } else if (result.error) {
@@ -28,5 +32,5 @@ export default class AutomotiveCenterMap extends LightningElement {
         }
     }
 
-      
+
 }

@@ -7,12 +7,14 @@ import LEAD_EMAIL_FIELD from "@salesforce/schema/Lead.Email";
 import LEAD_COMPANY_FIELD from "@salesforce/schema/Lead.Company";
 import LEAD_PHONE_FIELD from "@salesforce/schema/Lead.Phone";
 import LEAD_SOURCE_FIELD from "@salesforce/schema/Lead.LeadSource";
+import LEAD_DESCRIPTION_FIELD from "@salesforce/schema/Lead.Description";
 import getAllProducts from "@salesforce/apex/ProductController.getAllProducts";
-import Phone from '@salesforce/label/c.Phone';
-import Date from '@salesforce/label/c.Date';
-import Submit from '@salesforce/label/c.Submit';
-import Full_Name from '@salesforce/label/c.Full_Name';
-import Test_Drive_Request_Form from '@salesforce/label/c.Test_Drive_Request_Form';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import phoneLabel from '@salesforce/label/c.Phone';
+import dateLabel from '@salesforce/label/c.Date';
+import submitLabel from '@salesforce/label/c.Submit';
+import fullNameLabel from '@salesforce/label/c.Full_Name';
+import testDriveRequestFormLabel from '@salesforce/label/c.Test_Drive_Request_Form';
 
 export default class TestDriveForm extends LightningElement {
   cars;
@@ -21,11 +23,14 @@ export default class TestDriveForm extends LightningElement {
   @track phone = "";
   @track preferredDate = "";
   @track preferredCar = "";
-  Phone = Phone;
-  Full_Name = Full_Name;
-  Date = Date;
-  Submit = Submit;
-  Test_Drive_Request_Form = Test_Drive_Request_Form;
+  label = {
+    phoneLabel,
+    dateLabel,
+    submitLabel,
+    fullNameLabel,
+    testDriveRequestFormLabel
+  }
+
 
   @wire(getAllProducts)
   loadCars({ error, data }) {
@@ -63,6 +68,7 @@ export default class TestDriveForm extends LightningElement {
     fields[LEAD_PHONE_FIELD.fieldApiName] = this.phone;
     fields[LEAD_COMPANY_FIELD.fieldApiName] = "TEST DRIVE";
     fields[LEAD_SOURCE_FIELD.fieldApiName] = "Test Drive Request";
+    fields[LEAD_DESCRIPTION_FIELD.fieldApiName] = `Preferred Date: ${this.preferredDate}, Preferred Car: ${this.preferredCar}`;
 
     const recordInput = { apiName: LEAD_OBJECT.objectApiName, fields };
     createRecord(recordInput)
@@ -71,15 +77,21 @@ export default class TestDriveForm extends LightningElement {
         this.email = "";
         this.phone = "";
         this.preferredDate = "";
-        this.preferredCar = "";
-        this.showToast(
-          "success",
-          "Success!",
-          "Your test drive request has been submitted."
-        );
+        this.preferredCar = null;
+        const event = new ShowToastEvent({
+          title: 'Success',
+          message: 'Case created successfully',
+          variant: 'success'
+        });
+        this.dispatchEvent(event);
       })
       .catch((error) => {
-        this.showToast("error", "Error", error.body.message);
+        const event = new ShowToastEvent({
+          title: 'Error' + error.body.message,
+          message: error.body.message,
+          variant: 'error'
+        });
+        this.dispatchEvent(event);
       });
   }
 }

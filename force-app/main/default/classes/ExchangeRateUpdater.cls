@@ -1,6 +1,5 @@
 public class ExchangeRateUpdater {
   private static final String API_URL = 'https://api.nbrb.by/exrates/rates/431';
-  @AuraEnabled
   @future(callout=true)
   public static void updateExchangeRate() {
     Http http = new Http();
@@ -17,12 +16,9 @@ public class ExchangeRateUpdater {
       String currencyAbbreviation = (String) result.get('Cur_Abbreviation');
       Decimal exchangeRate = (Decimal) result.get('Cur_OfficialRate');
 
-      List<ExRate__c> exchangeRateRecords = [
-        SELECT Id, Exchange_Rate__c, Date_of_the_exchange_rate__c
-        FROM ExRate__c
-        WHERE Name = :currencyAbbreviation
-        LIMIT 1
-      ];
+      List<ExRate__c> exchangeRateRecords = ExRateManager.getExRateByName(
+        currencyAbbreviation
+      );
 
       ExRate__c exchangeRateRecord;
       if (exchangeRateRecords.size() > 0) {

@@ -4,11 +4,14 @@
       <div class="slds-media">
         <div class="slds-media__body">
           <p class="slds-var-m-bottom_xx-small">
-            {Address}: {center.Address__c}
+            {label.addressLabel}: {center.Address__c}
           </p>
-          <p class="slds-var-m-bottom_xx-small">{City}: {center.City__c}</p>
-          <p class="slds-var-m-bottom_xx-small">{Phone}: {center.Phone__c}</p>
-          <p>{center.Test__c}</p>
+          <p class="slds-var-m-bottom_xx-small">
+            {label.cityLabel}: {center.City__c}
+          </p>
+          <p class="slds-var-m-bottom_xx-small">
+            {label.phoneLabel}: {center.Phone__c}
+          </p>
         </div>
       </div>
     </div>

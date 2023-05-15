@@ -1,5 +1,5 @@
 <template>
-  <lightning-card title={Ask_Question}>
+  <lightning-card title={label.askQuestionLabel}>
     <div class="slds-p-around_medium">
       <lightning-input
         label="Email"
@@ -8,14 +8,14 @@
         onchange={handleEmailChange}
       ></lightning-input>
       <lightning-textarea
-        label={Question}
+        label={label.questionLabel}
         value={question}
         onchange={handleQuestionChange}
       ></lightning-textarea>
       <div class="slds-m-top_medium">
         <lightning-button
           variant="brand"
-          label={Submit}
+          label={label.submitLabel}
           onclick={handleSubmit}
         ></lightning-button>
       </div>
