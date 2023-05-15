@@ -24,12 +24,12 @@ export default class CarModal extends LightningElement {
     driveUnitLabel,
     equipmentLabel,
     priceLabel,
-    closeLabel,
-  }
+    closeLabel
+  };
 
   handleChange(event) {
     const selectedCurrency = event.target.value;
-    if (selectedCurrency === 'BYN') {
+    if (selectedCurrency === "BYN") {
       this.selectedCarPrice = this.priceBYN;
     } else {
       this.selectedCarPrice = this.priceUSD;

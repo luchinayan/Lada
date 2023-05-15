@@ -1,7 +1,7 @@
 import { LightningElement, api } from "lwc";
-import pdflib from "@salesforce/resourceUrl/  ";
+import pdflib from "@salesforce/resourceUrl/jsPDF";
 import { loadScript } from "lightning/platformResourceLoader";
-import downloadPDFLabel from '@salesforce/label/c.Download_PDF';
+import downloadPDFLabel from "@salesforce/label/c.Download_PDF";
 
 export default class CreatePDF extends LightningElement {
   @api selectedCar;
@@ -9,9 +9,9 @@ export default class CreatePDF extends LightningElement {
   @api priceUSD;
   label = {
     downloadPDFLabel
-  }
+  };
   renderedCallback() {
-    loadScript(this, pdflib).then(() => { });
+    loadScript(this, pdflib).then(() => {});
   }
 
   async createPdf() {
@@ -36,8 +36,8 @@ export default class CreatePDF extends LightningElement {
     for (let i = 0; i < this.selectedCar.PricebookEntries.length; i++) {
       page.drawText(
         this.selectedCar.PricebookEntries[i].Pricebook2.Name +
-        ": " +
-        this.selectedCar.PricebookEntries[i].UnitPrice,
+          ": " +
+          this.selectedCar.PricebookEntries[i].UnitPrice,
         {
           x: 50,
           y: y,

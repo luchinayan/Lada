@@ -5,6 +5,7 @@ public with sharing class ProductController {
       SELECT
         Name,
         Car_Body__c,
+        Img_Url__c,
         Drive_Unit__c,
         eq__c,
         Transmission__c,
