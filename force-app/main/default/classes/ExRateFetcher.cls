@@ -1,4 +1,4 @@
-public class ExchangeRateUpdater {
+public class ExRateFetcher {
   private static final String API_URL = 'https://api.nbrb.by/exrates/rates/431';
   @future(callout=true)
   public static void updateExchangeRate() {

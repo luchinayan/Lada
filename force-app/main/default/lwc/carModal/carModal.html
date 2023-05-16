@@ -12,13 +12,12 @@
           <p>{label.equipmentLabel}: {selectedCar.eq__c}</p>
           <p>{label.transmissionLabel}: {selectedCar.Transmission__c}</p>
           <div>
-            <h2>Select Currency:</h2>
+            <h2>{label.selectCurrencyLabel}:</h2>
             <select
               class="slds-select"
               id="currencySelector"
               onchange={handleChange}
             >
-              <option value="">Select currency</option>
               <template for:each={currencyOptions} for:item="option">
                 <option key={option.value} value={option.value}>
                   {option.label}

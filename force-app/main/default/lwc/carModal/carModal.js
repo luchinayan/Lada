@@ -6,12 +6,15 @@ import driveUnitLabel from "@salesforce/label/c.Drive_Unit";
 import equipmentLabel from "@salesforce/label/c.Equipment";
 import priceLabel from "@salesforce/label/c.Price";
 import closeLabel from "@salesforce/label/c.Close";
+import selectCurrencyLabel from "@salesforce/label/c.Select_Currency";
+
 export default class CarModal extends LightningElement {
   @api selectedCar;
   @api isModalOpen;
   @api priceBYN;
   @api priceUSD;
   @track selectedCarPrice;
+  isFirstTime = true
   selectedCurrency = "USD";
   currencyOptions = [
     { label: "USD", value: "USD" },
@@ -24,9 +27,15 @@ export default class CarModal extends LightningElement {
     driveUnitLabel,
     equipmentLabel,
     priceLabel,
-    closeLabel
+    closeLabel,
+    selectCurrencyLabel
   };
-
+  renderedCallback() {
+    if (this.isModalOpen && this.isFirstTime) {
+      this.isFirstTime = false
+      this.selectedCarPrice = this.priceUSD;
+    }
+  }
   handleChange(event) {
     const selectedCurrency = event.target.value;
     if (selectedCurrency === "BYN") {
@@ -37,6 +46,7 @@ export default class CarModal extends LightningElement {
   }
 
   closeModal() {
+    this.isFirstTime = true
     this.dispatchEvent(new CustomEvent("close"));
   }
 }

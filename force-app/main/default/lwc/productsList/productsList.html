@@ -1,19 +1,19 @@
 <template>
-  <ul>
+  <ul class="car-list">
     <template for:each={cars} for:item="car">
-      <li key={car.Id}>
+      <li key={car.Id} class="car-item">
         <lightning-card title={car.Name}>
-          <div class="car-info">
-            <img
-              src={car.Img_Url__c}
-              style="height: 100px; width: 150px"
-              alt="car"
-            />
-            <lightning-button
-              data-car-id={car.Id}
-              label={label.showDetails}
-              onclick={handleOpenModal}
-            ></lightning-button>
+          <div class="card-container">
+            <div class="card-image-container">
+              <img src={car.Img_Url__c} alt="car" />
+            </div>
+            <div class="card-button-container">
+              <lightning-button
+                data-car-id={car.Id}
+                label={label.showDetails}
+                onclick={handleOpenModal}
+              ></lightning-button>
+            </div>
           </div>
         </lightning-card>
       </li>

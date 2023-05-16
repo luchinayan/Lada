@@ -59,7 +59,7 @@
             value={preferredCar}
             onchange={handlePreferredCarChange}
           >
-            <option value="">--Select Car--</option>
+            <option value="">{label.selectCarLabel}</option>
             <template for:each={cars} for:item="car">
               <option key={car.Id} value={car.Name}>{car.Name}</option>
             </template>

@@ -22,7 +22,7 @@ export default class AutomotiveCenterMap extends LightningElement {
                         City: City
                     },
                     title: Street,
-                    description: `${Type},${PhoneText}: ${Phone}`,
+                    description: `${Type},${phoneLabel}: ${Phone}`,
                     icon: 'utility:travel_and_places',
                     recordId: center.Id
                 };
