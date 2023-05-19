@@ -13,24 +13,26 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import phoneLabel from '@salesforce/label/c.Phone';
 import selectCarLabel from '@salesforce/label/c.Select_Car';
 import dateLabel from '@salesforce/label/c.Date';
+import carLabel from '@salesforce/label/c.Car';
 import submitLabel from '@salesforce/label/c.Submit';
 import fullNameLabel from '@salesforce/label/c.Full_Name';
 import testDriveRequestFormLabel from '@salesforce/label/c.Test_Drive_Request_Form';
 
 export default class TestDriveForm extends LightningElement {
   cars;
-  @track fullName = "";
-  @track email = "";
-  @track phone = "";
-  @track preferredDate = "";
-  @track preferredCar = "";
+  @track fullName;
+  @track email;
+  @track phone;
+  @track preferredDate;
+  @track preferredCar;
   label = {
     phoneLabel,
     dateLabel,
     submitLabel,
     fullNameLabel,
     testDriveRequestFormLabel,
-    selectCarLabel
+    selectCarLabel,
+    carLabel
   }
 
 
