@@ -14,7 +14,7 @@ export default class CarModal extends LightningElement {
   @api priceBYN;
   @api priceUSD;
   @track selectedCarPrice;
-  isFirstTime = true
+  isFirstTime = true;
   selectedCurrency = "USD";
   currencyOptions = [
     { label: "USD", value: "USD" },
@@ -32,7 +32,7 @@ export default class CarModal extends LightningElement {
   };
   renderedCallback() {
     if (this.isModalOpen && this.isFirstTime) {
-      this.isFirstTime = false
+      this.isFirstTime = false;
       this.selectedCarPrice = this.priceUSD;
     }
   }
@@ -46,7 +46,7 @@ export default class CarModal extends LightningElement {
   }
 
   closeModal() {
-    this.isFirstTime = true
+    this.isFirstTime = true;
     this.dispatchEvent(new CustomEvent("close"));
   }
 }

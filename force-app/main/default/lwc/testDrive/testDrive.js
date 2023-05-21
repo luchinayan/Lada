@@ -9,30 +9,31 @@ import LEAD_PHONE_FIELD from "@salesforce/schema/Lead.Phone";
 import LEAD_SOURCE_FIELD from "@salesforce/schema/Lead.LeadSource";
 import LEAD_PRODUCTINTEREST_FIELD from "@salesforce/schema/Lead.ProductInterest__c";
 import getAllProducts from "@salesforce/apex/ProductController.getAllProducts";
-import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import phoneLabel from '@salesforce/label/c.Phone';
-import selectCarLabel from '@salesforce/label/c.Select_Car';
-import dateLabel from '@salesforce/label/c.Date';
-import submitLabel from '@salesforce/label/c.Submit';
-import fullNameLabel from '@salesforce/label/c.Full_Name';
-import testDriveRequestFormLabel from '@salesforce/label/c.Test_Drive_Request_Form';
+import { ShowToastEvent } from "lightning/platformShowToastEvent";
+import phoneLabel from "@salesforce/label/c.Phone";
+import selectCarLabel from "@salesforce/label/c.Select_Car";
+import dateLabel from "@salesforce/label/c.Date";
+import carLabel from "@salesforce/label/c.Car";
+import submitLabel from "@salesforce/label/c.Submit";
+import fullNameLabel from "@salesforce/label/c.Full_Name";
+import testDriveRequestFormLabel from "@salesforce/label/c.Test_Drive_Request_Form";
 
 export default class TestDriveForm extends LightningElement {
   cars;
-  @track fullName = "";
-  @track email = "";
-  @track phone = "";
-  @track preferredDate = "";
-  @track preferredCar = "";
+  @track fullName;
+  @track email;
+  @track phone;
+  @track preferredDate;
+  @track preferredCar;
   label = {
     phoneLabel,
     dateLabel,
     submitLabel,
     fullNameLabel,
     testDriveRequestFormLabel,
-    selectCarLabel
-  }
-
+    selectCarLabel,
+    carLabel
+  };
 
   @wire(getAllProducts)
   loadCars({ error, data }) {
@@ -63,7 +64,6 @@ export default class TestDriveForm extends LightningElement {
   }
 
   async handleSubmit() {
-
     const fields = {};
     fields[LEAD_FIRST_NAME_FIELD.fieldApiName] = this.fullName.split(" ")[0];
     fields[LEAD_LAST_NAME_FIELD.fieldApiName] = this.fullName.split(" ")[1];
@@ -80,20 +80,20 @@ export default class TestDriveForm extends LightningElement {
         this.email = "";
         this.phone = "";
         this.preferredDate = "";
-        const selectElement = this.template.querySelector('.slds-select');
+        const selectElement = this.template.querySelector(".slds-select");
         selectElement.selectedIndex = 0;
         const event = new ShowToastEvent({
-          title: 'Success',
-          message: 'Case created successfully',
-          variant: 'success'
+          title: "Success",
+          message: "Case created successfully",
+          variant: "success"
         });
         this.dispatchEvent(event);
       })
       .catch((error) => {
         const event = new ShowToastEvent({
-          title: 'Error' + error.body.message,
+          title: "Error" + error.body.message,
           message: error.body.message,
-          variant: 'error'
+          variant: "error"
         });
         this.dispatchEvent(event);
       });

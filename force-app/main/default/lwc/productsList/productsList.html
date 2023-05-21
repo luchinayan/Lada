@@ -11,7 +11,13 @@
               <lightning-button
                 data-car-id={car.Id}
                 label={label.showDetails}
-                onclick={handleOpenModal}
+                onclick={handleOpenCarModal}
+                class="slds-m-horizontal_x-small"
+              ></lightning-button>
+              <lightning-button
+                label={label.submitApplicationLabel}
+                onclick={handleOpenBuyCarModal}
+                class="slds-m-horizontal_x-small"
               ></lightning-button>
             </div>
           </div>
@@ -20,10 +26,15 @@
     </template>
   </ul>
 
+  <c-buy-car-modal
+    is-modal-open={isBuyCarModalOpen}
+    onclose={handleCloseBuyCarModal}
+  ></c-buy-car-modal>
+
   <c-car-modal
-    is-modal-open={isModalOpen}
+    is-modal-open={isCarModalOpen}
     selected-car={selectedCar}
-    onclose={handleCloseModal}
+    onclose={handleCloseCarModal}
     price-b-y-n={priceBYN}
     price-u-s-d={priceUSD}
   ></c-car-modal>
