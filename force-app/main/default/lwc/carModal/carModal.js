@@ -14,6 +14,7 @@ export default class CarModal extends LightningElement {
   @api priceBYN;
   @api priceUSD;
   @track selectedCarPrice;
+  @api exchangeRate;
   isFirstTime = true;
   selectedCurrency = "USD";
   currencyOptions = [
@@ -38,6 +39,7 @@ export default class CarModal extends LightningElement {
   }
   handleChange(event) {
     const selectedCurrency = event.target.value;
+    this.selectedCurrency = event.target.value;
     if (selectedCurrency === "BYN") {
       this.selectedCarPrice = this.priceBYN;
     } else {
@@ -47,6 +49,7 @@ export default class CarModal extends LightningElement {
 
   closeModal() {
     this.isFirstTime = true;
+    this.selectedCurrency = "USD";
     this.dispatchEvent(new CustomEvent("close"));
   }
 }

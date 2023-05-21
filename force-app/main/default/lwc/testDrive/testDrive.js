@@ -8,8 +8,7 @@ import LEAD_COMPANY_FIELD from "@salesforce/schema/Lead.Company";
 import LEAD_PHONE_FIELD from "@salesforce/schema/Lead.Phone";
 import LEAD_SOURCE_FIELD from "@salesforce/schema/Lead.LeadSource";
 import LEAD_PRODUCTINTEREST_FIELD from "@salesforce/schema/Lead.ProductInterest__c";
-import getAllProducts from "@salesforce/apex/ProductController.getAllProducts";
-<<<<<<< HEAD
+import getAllProducts from "@salesforce/apex/ProductController.getAllProductsAndPrices";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import phoneLabel from "@salesforce/label/c.Phone";
 import selectCarLabel from "@salesforce/label/c.Select_Car";
@@ -18,16 +17,6 @@ import carLabel from "@salesforce/label/c.Car";
 import submitLabel from "@salesforce/label/c.Submit";
 import fullNameLabel from "@salesforce/label/c.Full_Name";
 import testDriveRequestFormLabel from "@salesforce/label/c.Test_Drive_Request_Form";
-=======
-import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import phoneLabel from '@salesforce/label/c.Phone';
-import selectCarLabel from '@salesforce/label/c.Select_Car';
-import dateLabel from '@salesforce/label/c.Date';
-import carLabel from '@salesforce/label/c.Car';
-import submitLabel from '@salesforce/label/c.Submit';
-import fullNameLabel from '@salesforce/label/c.Full_Name';
-import testDriveRequestFormLabel from '@salesforce/label/c.Test_Drive_Request_Form';
->>>>>>> 1a45e90a962d31d7b58558b761f80459a8831d31
 
 export default class TestDriveForm extends LightningElement {
   cars;
@@ -44,12 +33,7 @@ export default class TestDriveForm extends LightningElement {
     testDriveRequestFormLabel,
     selectCarLabel,
     carLabel
-<<<<<<< HEAD
   };
-=======
-  }
-
->>>>>>> 1a45e90a962d31d7b58558b761f80459a8831d31
 
   @wire(getAllProducts)
   loadCars({ error, data }) {

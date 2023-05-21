@@ -15,6 +15,7 @@
                 class="slds-m-horizontal_x-small"
               ></lightning-button>
               <lightning-button
+                data-car-id={car.Id}
                 label={label.submitApplicationLabel}
                 onclick={handleOpenBuyCarModal}
                 class="slds-m-horizontal_x-small"
@@ -25,10 +26,10 @@
       </li>
     </template>
   </ul>
-
   <c-buy-car-modal
     is-modal-open={isBuyCarModalOpen}
     onclose={handleCloseBuyCarModal}
+    selected-car={selectedCar}
   ></c-buy-car-modal>
 
   <c-car-modal
@@ -37,5 +38,6 @@
     onclose={handleCloseCarModal}
     price-b-y-n={priceBYN}
     price-u-s-d={priceUSD}
+    exchange-rate={exchangeRate}
   ></c-car-modal>
 </template>

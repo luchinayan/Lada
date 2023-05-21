@@ -13,7 +13,7 @@ export default class CreatePDF extends LightningElement {
   @wire(getProductsWithPricesByName, { name: "$selectedCar.Name" })
   productWithPrices;
   async createPdf() {
-    let pdfContent = `Prices for ${this.selectedCar.Name}: `;
+    let pdfContent = `Prices for ${this.selectedCar.Name}:`;
     if (this.selectedCurrency === "USD") {
       for (let price of this.productWithPrices.data.PricebookEntries) {
         pdfContent += `<br></br> ${price.Pricebook2.Name}  ${price.UnitPrice}  ${this.selectedCurrency}`;

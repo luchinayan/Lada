@@ -1,5 +1,5 @@
 import getUSDExchangeRate from "@salesforce/apex/ExRateController.getUSDExchangeRate";
-import getAllProducts from "@salesforce/apex/ProductController.getAllProducts";
+import getAllProducts from "@salesforce/apex/ProductController.getAllProductsAndPrices";
 import { LightningElement, wire } from "lwc";
 import showDetails from "@salesforce/label/c.Show_Details";
 import submitApplicationLabel from "@salesforce/label/c.Submit_Application";
@@ -33,11 +33,17 @@ export default class ProductsList extends LightningElement {
     }
   }
 
-  handleOpenBuyCarModal() {
+  handleOpenBuyCarModal(event) {
+    const carId = event.currentTarget.dataset.carId;
+
+    this.selectedCar = this.cars.find((car) => car.Id === carId);
     this.isBuyCarModalOpen = true;
   }
   handleOpenCarModal(event) {
+    this.isCarModalOpen = true;
+
     const carId = event.currentTarget.dataset.carId;
+
     this.selectedCar = this.cars.find((car) => car.Id === carId);
     this.selectedCarPrice = this.selectedCar.PricebookEntries.find(
       (p) => p.Pricebook2.Name === this.selectedCar.eq__c
@@ -45,7 +51,6 @@ export default class ProductsList extends LightningElement {
     this.priceUSD = this.selectedCarPrice;
 
     this.priceBYN = this.selectedCarPrice * this.exchangeRate;
-    this.isCarModalOpen = true;
   }
 
   handleCloseCarModal() {

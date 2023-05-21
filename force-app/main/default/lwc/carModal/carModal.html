@@ -29,11 +29,11 @@
         </div>
         <footer class="slds-grid slds-modal__footer slds-grid_align-spread">
           <div class="slds-col">
-            <c-generate-p-d-f
-              price-b-y-n={priceBYN}
-              price-u-s-d={priceUSD}
+            <c-create-p-d-f
+              selected-currency={selectedCurrency}
+              exchange-rate={exchangeRate}
               selected-car={selectedCar}
-            ></c-generate-p-d-f>
+            ></c-create-p-d-f>
           </div>
           <div class="slds-col">
             <button
