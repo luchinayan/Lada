@@ -1,5 +1,5 @@
 @isTest
-private class ExchangeRateUpdaterTest {
+private class ExRateFetcherTest {
   @isTest
   static void testUpdateExchangeRate() {
     String mockResponse = '{"Cur_Abbreviation": "USD","Cur_OfficialRate": 2.0}';

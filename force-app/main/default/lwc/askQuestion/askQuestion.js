@@ -6,8 +6,8 @@ import questionLabel from '@salesforce/label/c.Question';
 import submitLabel from '@salesforce/label/c.Submit';
 
 export default class AskQuestion extends LightningElement {
-    @track email = '';
-    @track question = '';
+    @track email;
+    @track question;
     label = {
         askQuestionLabel,
         questionLabel,

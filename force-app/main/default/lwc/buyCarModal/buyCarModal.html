@@ -1,0 +1,42 @@
+<template>
+  <template if:true={isModalOpen}>
+    <div class="slds-modal slds-fade-in-open">
+      <div class="slds-modal__container">
+        <lightning-card class="slds-m-horizontal_medium">
+          <lightning-input
+            type="text"
+            name="name"
+            label={label.fullNameLabel}
+            id="name"
+            class="slds-m-bottom_medium slds-m-horizontal_medium"
+            value={fullName}
+            onchange={handleNameChange}
+          ></lightning-input>
+          <lightning-input
+            type="email"
+            name="email"
+            class="slds-m-bottom_medium slds-m-horizontal_medium"
+            id="email"
+            label="Email"
+            value={email}
+            onchange={handleEmailChange}
+          ></lightning-input>
+          <footer class="slds-grid slds-modal__footer slds-grid_align-spread">
+            <div class="slds-col">
+              <lightning-button
+                label={label.submitApplicationLabel}
+                onclick={handleSubmit}
+              >
+              </lightning-button>
+            </div>
+            <div class="slds-col">
+              <lightning-button label={label.closeLabel} onclick={closeModal}>
+              </lightning-button>
+            </div>
+          </footer>
+        </lightning-card>
+      </div>
+    </div>
+    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+  </template>
+</template>
