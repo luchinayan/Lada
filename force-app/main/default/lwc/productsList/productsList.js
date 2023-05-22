@@ -50,7 +50,7 @@ export default class ProductsList extends LightningElement {
     ).UnitPrice;
     this.priceUSD = this.selectedCarPrice;
 
-    this.priceBYN = this.selectedCarPrice * this.exchangeRate;
+    this.priceBYN = (this.selectedCarPrice * this.exchangeRate).toFixed(1);
   }
 
   handleCloseCarModal() {

@@ -14,7 +14,6 @@ export default class AskQuestion extends LightningElement {
         submitLabel,
     }
 
-
     handleEmailChange(event) {
         this.email = event.target.value;
     }

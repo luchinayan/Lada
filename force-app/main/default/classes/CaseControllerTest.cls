@@ -1,7 +1,7 @@
 @isTest
 private class CaseControllerTest {
-  private static final String TEST_EMAIL = 'test@example.com';
-  private static final String TEST_QUESTION = 'Test question';
+  private static String TEST_EMAIL = 'test@example.com';
+  private static String TEST_QUESTION = 'Test question';
 
   @isTest
   static void testCreateCase() {

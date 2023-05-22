@@ -36,11 +36,10 @@ export default class BuyCarModal extends LightningElement {
     fields[LEAD_LAST_NAME_FIELD.fieldApiName] = this.fullName.split(" ")[1];
     fields[LEAD_EMAIL_FIELD.fieldApiName] = this.email;
     fields[LEAD_COMPANY_FIELD.fieldApiName] = "Request car";
-    fields[LEAD_SOURCE_FIELD.fieldApiName] = "Request buy car ";
+    fields[LEAD_SOURCE_FIELD.fieldApiName] = "Request buy car";
     const recordInput = { apiName: LEAD_OBJECT.objectApiName, fields };
 
-    createRecord(recordInput).then((r) => {
-      console.log(r);
+    createRecord(recordInput).then(() => {
       this.fullName = "";
       this.email = "";
       const event = new ShowToastEvent({

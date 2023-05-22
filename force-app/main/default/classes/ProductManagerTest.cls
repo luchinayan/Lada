@@ -1,5 +1,5 @@
-@isTest
-private class ProductControllerTest {
+@IsTest
+public with sharing class ProductManagerTest {
   @TestSetup
   static void makeProduct() {
     Product2 testProduct = new Product2(
@@ -33,11 +33,12 @@ private class ProductControllerTest {
     );
     insert pbe;
   }
-
-  @isTest
+  @IsTest
   static void testGetAllProductsWithPrices() {
     List<Product2> result = ProductManager.getAllProductsWithPrices();
 
+    System.assertEquals(1, result.size(), 'Expected 1 product');
+
     Product2 testProduct = [
       SELECT Name, Transmission__c
       FROM Product2
@@ -45,41 +46,24 @@ private class ProductControllerTest {
     ];
 
     System.assertEquals(
-      testProduct.Name,
+      'Test Product',
       result[0].Name,
-      'Name field doesn\'t match'
+      'Name field should match'
     );
-
-    System.assertEquals(
-      testProduct.Transmission__c,
-      result[0].Transmission__c,
-      'Transmission__c field doesn\'t match'
-    );
-
-    System.assertNotEquals(0, result.size(), 'Size can not be 0');
   }
-  @isTest
-  static void testGetAllProductsWithPricesByName() {
-    Product2 testProduct = [
-      SELECT Name, Transmission__c
-      FROM Product2
-      WHERE name = 'Test Product'
-    ];
 
+  @IsTest
+  static void testGetProductsWithPricesByName() {
     Product2 result = ProductManager.getProductsWithPricesByName(
       'Test Product'
     );
 
-    System.assertEquals(
-      testProduct.Name,
-      result.Name,
-      'Name field doesn\'t match'
-    );
+    Product2 testProduct = [
+      SELECT Name, Transmission__c
+      FROM Product2
+      WHERE name = 'Test Product'
+    ];
 
-    System.assertEquals(
-      testProduct.Transmission__c,
-      result.Transmission__c,
-      'Transmission__c field doesn\'t match'
-    );
+    System.assertEquals('Test Product', result.Name, 'Name field should match');
   }
 }

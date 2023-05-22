@@ -8,7 +8,7 @@ import LEAD_COMPANY_FIELD from "@salesforce/schema/Lead.Company";
 import LEAD_PHONE_FIELD from "@salesforce/schema/Lead.Phone";
 import LEAD_SOURCE_FIELD from "@salesforce/schema/Lead.LeadSource";
 import LEAD_PRODUCTINTEREST_FIELD from "@salesforce/schema/Lead.ProductInterest__c";
-import getAllProducts from "@salesforce/apex/ProductController.getAllProductsAndPrices";
+import getAllProductsAndPrices from "@salesforce/apex/ProductController.getAllProductsAndPrices";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import phoneLabel from "@salesforce/label/c.Phone";
 import selectCarLabel from "@salesforce/label/c.Select_Car";
@@ -35,7 +35,7 @@ export default class TestDriveForm extends LightningElement {
     carLabel
   };
 
-  @wire(getAllProducts)
+  @wire(getAllProductsAndPrices)
   loadCars({ error, data }) {
     if (data) {
       this.cars = data;

@@ -7,7 +7,6 @@ export default class AutomotiveCenterList extends LightningElement {
     loadCenters(result) {
         if (result.data) {
             this.centers = result.data;
-
         } else if (result.error) {
             console.error(result.error);
         }
