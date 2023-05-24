@@ -4,6 +4,8 @@ import createCase from '@salesforce/apex/CaseController.createCase';
 import askQuestionLabel from '@salesforce/label/c.Ask_Question';
 import questionLabel from '@salesforce/label/c.Question';
 import submitLabel from '@salesforce/label/c.Submit';
+import successLabel from "@salesforce/label/c.Success";
+import requestSendLabel from "@salesforce/label/c.Request_send";
 
 export default class AskQuestion extends LightningElement {
     @track email;
@@ -12,6 +14,8 @@ export default class AskQuestion extends LightningElement {
         askQuestionLabel,
         questionLabel,
         submitLabel,
+        successLabel,
+        requestSendLabel
     }
 
     handleEmailChange(event) {
@@ -28,9 +32,9 @@ export default class AskQuestion extends LightningElement {
                 this.email = '';
                 this.question = '';
                 const event = new ShowToastEvent({
-                    title: 'Success',
-                    message: 'Case created successfully',
-                    variant: 'success'
+                    title: this.label.successLabel,
+                    message: this.label.requestSendLabel,
+                    variant: "success"
                 });
                 this.dispatchEvent(event);
             })

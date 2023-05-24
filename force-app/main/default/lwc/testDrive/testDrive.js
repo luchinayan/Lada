@@ -4,7 +4,6 @@ import LEAD_OBJECT from "@salesforce/schema/Lead";
 import LEAD_FIRST_NAME_FIELD from "@salesforce/schema/Lead.FirstName";
 import LEAD_LAST_NAME_FIELD from "@salesforce/schema/Lead.LastName";
 import LEAD_EMAIL_FIELD from "@salesforce/schema/Lead.Email";
-import LEAD_COMPANY_FIELD from "@salesforce/schema/Lead.Company";
 import LEAD_PHONE_FIELD from "@salesforce/schema/Lead.Phone";
 import LEAD_SOURCE_FIELD from "@salesforce/schema/Lead.LeadSource";
 import LEAD_PRODUCTINTEREST_FIELD from "@salesforce/schema/Lead.ProductInterest__c";
@@ -17,6 +16,8 @@ import carLabel from "@salesforce/label/c.Car";
 import submitLabel from "@salesforce/label/c.Submit";
 import fullNameLabel from "@salesforce/label/c.Full_Name";
 import testDriveRequestFormLabel from "@salesforce/label/c.Test_Drive_Request_Form";
+import successLabel from "@salesforce/label/c.Success";
+import requestSendLabel from "@salesforce/label/c.Request_send";
 
 export default class TestDriveForm extends LightningElement {
   cars;
@@ -32,7 +33,9 @@ export default class TestDriveForm extends LightningElement {
     fullNameLabel,
     testDriveRequestFormLabel,
     selectCarLabel,
-    carLabel
+    carLabel,
+    successLabel,
+    requestSendLabel
   };
 
   @wire(getAllProductsAndPrices)
@@ -69,8 +72,7 @@ export default class TestDriveForm extends LightningElement {
     fields[LEAD_LAST_NAME_FIELD.fieldApiName] = this.fullName.split(" ")[1];
     fields[LEAD_EMAIL_FIELD.fieldApiName] = this.email;
     fields[LEAD_PHONE_FIELD.fieldApiName] = this.phone;
-    fields[LEAD_COMPANY_FIELD.fieldApiName] = "TEST DRIVE";
-    fields[LEAD_SOURCE_FIELD.fieldApiName] = "Test Drive Request";
+    fields[LEAD_SOURCE_FIELD.fieldApiName] = "Request Test Drive";
     fields[LEAD_PRODUCTINTEREST_FIELD.fieldApiName] = this.preferredCar;
 
     const recordInput = { apiName: LEAD_OBJECT.objectApiName, fields };
@@ -83,15 +85,15 @@ export default class TestDriveForm extends LightningElement {
         const selectElement = this.template.querySelector(".slds-select");
         selectElement.selectedIndex = 0;
         const event = new ShowToastEvent({
-          title: "Success",
-          message: "Case created successfully",
+          title: this.label.successLabel,
+          message: this.label.requestSendLabel,
           variant: "success"
         });
         this.dispatchEvent(event);
       })
       .catch((error) => {
         const event = new ShowToastEvent({
-          title: "Error" + error.body.message,
+          title: "Error",
           message: error.body.message,
           variant: "error"
         });
