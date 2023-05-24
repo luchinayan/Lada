@@ -9,7 +9,7 @@ private class ExRateFetcherTest {
     );
 
     Test.startTest();
-    ExchangeRateUpdater.updateExchangeRate();
+    ExRateFetcher.updateExchangeRate();
     Test.stopTest();
 
     ExRate__c updatedExchangeRateRecord = [

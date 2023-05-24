@@ -1,15 +1,31 @@
 <template>
-  <lightning-layout multiple-rows="true" pull-to-boundary="small">
-    <template for:each={centers} for:item="center">
-      <lightning-layout-item
-        key={center.Id}
-        size="8"
-        class="slds-var-p-around_x-small"
-      >
+  <lightning-layout
+    if:true={centers}
+    multiple-rows="true"
+    pull-to-boundary="small"
+    class="slds-p-around_medium slds-grid slds-grid_align-spread"
+  >
+    <lightning-layout-item class="slds-col" size="4">
+      <h1 class="slds-align_absolute-center slds-text-heading_large">
+        {label.dealerLabel}
+      </h1>
+      <template for:each={dealers} for:item="dealer">
         <c-automotive-center-details
-          center={center}
+          key={dealer.Id}
+          center={dealer}
         ></c-automotive-center-details>
-      </lightning-layout-item>
-    </template>
+      </template>
+    </lightning-layout-item>
+    <lightning-layout-item class="slds-col" size="4">
+      <h1 class="slds-align_absolute-center slds-text-heading_large">
+        {label.serviceLabel}
+      </h1>
+      <template for:each={services} for:item="service">
+        <c-automotive-center-details
+          key={service.Id}
+          center={service}
+        ></c-automotive-center-details>
+      </template>
+    </lightning-layout-item>
   </lightning-layout>
 </template>

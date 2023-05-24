@@ -10,6 +10,7 @@ import LEAD_EMAIL_FIELD from "@salesforce/schema/Lead.Email";
 import LEAD_COMPANY_FIELD from "@salesforce/schema/Lead.Company";
 import LEAD_SOURCE_FIELD from "@salesforce/schema/Lead.LeadSource";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
+import LEAD_PRODUCTINTEREST_FIELD from "@salesforce/schema/Lead.ProductInterest__c";
 
 export default class BuyCarModal extends LightningElement {
   @api isModalOpen;
@@ -38,6 +39,7 @@ export default class BuyCarModal extends LightningElement {
     fields[LEAD_COMPANY_FIELD.fieldApiName] = "Request car";
     fields[LEAD_SOURCE_FIELD.fieldApiName] = "Request buy car";
     const recordInput = { apiName: LEAD_OBJECT.objectApiName, fields };
+    fields[LEAD_PRODUCTINTEREST_FIELD.fieldApiName] = this.selectedCar.Name;
 
     createRecord(recordInput).then(() => {
       this.fullName = "";
